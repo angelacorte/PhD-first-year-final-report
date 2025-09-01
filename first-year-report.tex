@@ -1,0 +1,282 @@
+% This is samplepaper.tex, a sample chapter demonstrating the
+% LLNCS macro package for Springer Computer Science proceedings;
+% Version 2.21 of 2022/01/12
+%
+\documentclass[runningheads]{llncs}
+\usepackage[inline]{enumitem}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{geometry}
+\geometry{a4paper, left=25mm, right=25mm, top=25mm, bottom=25mm}
+
+% \usepackage{fontspec}
+%
+\usepackage[T1]{fontenc}
+% T1 fonts will be used to generate the final print and online PDFs,
+% so please use T1 fonts in your manuscript whenever possible.
+% Other font encondings may result in incorrect characters.
+%
+\usepackage{graphicx}
+\usepackage{hyperref}
+% Used for displaying a sample figure. If possible, figure files should
+% be included in EPS format.
+%
+% If you use the hyperref package, please uncomment the following two lines
+% to display URLs in blue roman font according to Springer's eBook style:
+%\usepackage{color}
+%\renewcommand\UrlFont{\color{blue}\rmfamily}
+%
+
+
+\begin{document}
+
+    \begin{titlepage}
+        \centering
+        \vspace*{2cm}
+
+        {\scshape\Large PhD Programme in Computer Science and Engineering \par}
+        \vspace{0.5cm}
+        {\scshape\large Cycle XXXX \par}
+        \vspace{0.5cm}
+
+        \rule{\linewidth}{0.4mm} \\ [0.1mm]
+        \raisebox{0.2cm}{\rule{\linewidth}{0.8mm}} \\[0.8cm]
+        {\huge\bfseries PhD First Year -- Final Report \par}
+        \vspace{0.8cm}
+        \rule{\linewidth}{0.8mm} \\ [0.1pt]
+        \raisebox{0.2cm}{\rule{\linewidth}{0.4mm}} \\[1.5cm]
+
+        % {\Large PhD First Year -- Final Report \par}
+
+        \vspace{1.5cm}
+
+        \noindent
+        \begin{minipage}[t]{0.45\textwidth}
+            \raggedright
+            \textbf{Commission:}\\[0.5cm]
+            Prof. Danilo Pianini\\
+            Prof. Mirko Viroli\\
+            Prof. Enrico Gallinucci
+        \end{minipage}%
+        \hfill
+        \begin{minipage}[t]{0.45\textwidth}
+            \raggedleft
+            \textbf{PhD Student:}\\[0.5cm]
+            Angela Cortecchia
+        \end{minipage}
+
+        \vfill
+
+    \end{titlepage}
+
+    \section{Context}
+    Collective Adaptive Systems (CAS) are distributed ensembles of devices (sensors, actuators, robots) that cooperate to achieve global goals under dynamic environmental conditions~\cite{DBLP:conf/huc/Ferscha15}.
+    Macroprogramming approaches~\cite{casadei22} simplify the development of CAS by abstracting device-level details, enabling scalability, robustness, and adaptivity.
+
+    A foundational step in this direction is \emph{Field Calculus (FC)}~\cite{JLAMP2019,TOCL2019}, a model for expressing collective behavior via computational fields.
+    Building on this, \emph{Aggregate Computing (AC)}~\cite{BealIEEEComputer2015} allows the concise, compositional programming of collective IoT systems.
+
+    Recent works introduced the concept of \emph{aggregate processes}~\cite{EAAI2020-processes}, akin to operating system processes but distributed across space-time. However, current abstractions lack mechanisms for permissions, inter-process communication, or signal management.
+
+    This project aims to advance towards the design of a \textbf{Collective Operating System (COS)}, providing an execution and management layer for multiple aggregate processes across heterogeneous devices.
+
+    \subsection{Research Goals and Challenges}
+    The project investigates how classical OS concepts translate into space-time distributed settings:
+    \begin{itemize}
+        \item \textbf{Users and permissions}: defining roles and access rights in collective environments (e.g., crowd vs.\ law enforcement).
+        \item \textbf{Signals and interrupts}: enabling dynamic reconfiguration of aggregate processes while ensuring safety and authorization.
+        \item \textbf{Intra-process communication}: supporting coordination among processes running in different regions.
+        \item \textbf{Distributed sensors/actuators}: realizing collective sensing and actuation via abstraction and sensor fusion~\cite{DBLP:journals/arc/Sasiadek02}.
+    \end{itemize}
+    The COS aims to ensure consistency, adaptivity, and resilience in highly dynamic environments.
+
+    \subsection{Reference Scenarios}
+    Potential applications include:
+    \begin{itemize}
+        \item \textbf{Crowd management}: steering and tracking crowds with distributed drones and sensors, enabling interventions via authorized signals.
+        \item \textbf{Autonomous navigation}: coordinating maritime autonomous surface ships using heterogeneous communication technologies.
+        \item \textbf{Smart cities}: optimizing energy consumption (e.g., adaptive lighting) and traffic control.
+    \end{itemize}
+
+    \subsection{Coherence with Previous Work}
+    The proposal builds upon the candidate’s prior contributions:
+    \begin{itemize}
+        \item Development of Collektive DSL~\cite{AudritoCDSV24}, extending FC with XC constructs.
+        \item A GARR-funded project to enrich Collektive with a standard library and demos across devices.
+        \item Co-authored works under review, including: (i) a generalization of the VMC algorithm~\cite{ZahadatHS17} in AC, and (ii) an architecture for monitoring distributed simulations.
+    \end{itemize}
+
+    \subsection{Expected Contribution}
+    The research aims to define the principles and architecture of a \textbf{Collective Operating System}, bridging Aggregate Computing with distributed OS concepts~\cite{DBLP:journals/csur/TanenbaumR85}.
+    Such a system would provide a general-purpose, programmable, and adaptive middleware for collective adaptive systems, with direct applications in IoT, robotics, and smart infrastructures.
+
+
+    \section{Methodology and Preliminary Results}\label{sec:methodology}
+
+
+    \section{Future Work and Research Plan}\label{sec:future}
+
+
+
+    \section{Pubblications}
+    List of published (or already accepted) papers:
+    \begin{enumerate}
+        \item \emph{A Field-based Approach for Runtime Replanning in Swarm Robotics Missions}
+        \textbf{Abstract:
+        Ensuring mission success for multi-robot systems operating
+        in unpredictable environments requires robust mechanisms to react to unpredictable events,
+            such as robot failures,
+            by adapting plans in real-time.
+%
+            Adaptive mechanisms are especially needed for large teams deployed in areas with unreliable network infrastructure,
+            for which centralized control is impractical and where network segmentation is frequent.
+%
+            This paper advances the state of the art by proposing a field-based runtime task replanning approach grounded in aggregate programming.
+%
+            Through this paradigm,
+            the mission and the environment are represented by continuously evolving fields,
+            enabling robots to make decentralized decisions
+            and collectively adapt the ongoing plan.
+%
+            We compare our approach with a simple late-stage replanning strategy
+            and an oracle centralized continuous replanner.
+%
+            We provide experimental evidence that
+            the proposed approach achieves performance close to the oracle if the communication range is sufficient,
+            while significantly outperforming the baseline even under sparse communication.
+%
+            Additionally, we show that the approach can scale well with the number of robots.
+        }
+
+        %
+    \end{enumerate}
+
+%    \section{Attended Conferences and Workshops}
+%    \begin{enumerate}
+%        \item \textbf{Coordination Models and Languages} - 26th International Conference, COORDINATION 2024, Held as Part of the 19th International Federated Conference on Distributed Computing Techniques, DisCoTec 2024, Groningen, The Netherlands, June 17-21, 2024
+%        \item \textbf{25th Workshop "From Objects to Agents"}, Bard (Aosta), Italy, July 8-10, 2024
+%        \item \textbf{IEEE International Conference on Autonomic Computing and Self-Organizing Systems}, ACSOS 2024, Aarhus, Denmark, September 16-20 2024
+%        \item \textbf{11th Workshop on Self-Improving Systems Integration}, SISSY 2024, Held as Part of ACSOS 2024, Aarhus, Denmark, September 16-20 2024
+%        \item \textbf{2nd International Workshop on Artificial Intelligence for Autonomous computing Systems}, AI4AS 2024, Held as Part of ACSOS 2024, Aarhus, Denmark, September 16-20 2024
+%        \item \textbf{28th International Symposium on Distributed Simulation and Real Time Applications}, DS-RT 2024, Urbino, Italy, October 7-9 2024
+%    \end{enumerate}
+
+    \section{Doctoral Schools}
+    \begin{enumerate}
+        \item \textbf{SPAICERAISE, The "International Doctoral School" For The Space Sector}, SPACERAISE 2025, L'Aquila, Italy, May 12-16 ,2025
+        \item \textbf{Bertionoro International Spring School 2025}, BISS 2025, Bertinoro, Italy, May 19-23 ,2025
+        \item \textbf{SIESTA, 5th International Software Engineering Summer School}, SIESTA 2025, Lugano, Switzerland, August 27-29 ,2025
+    \end{enumerate}
+
+    \section{Teaching Tutor}
+    \begin{enumerate}
+        \item \textbf{Architetture Degli Elaboratori} -- Computer Science and Engineering Bachelor Degree
+%        \item \textbf{Software Engineering (Modulo 1)} - Digital Transformation Management Master Degree
+    \end{enumerate}
+
+    \section{PhD Courses}
+
+    \begin{enumerate}
+        \item \textbf{BISS 2025 - Bertinoro International Spring School - \textit{Quantum Computing and Software Engineering}}
+        \begin{itemize}
+            \item Prof: Shaukat Ali -- Simula Research Laboratory, Norway
+            \item Proposed CD: 3.6 (12 hours)
+            \item Period: May 2025
+            \item Exam: Done, CDs with evaluation
+        \end{itemize}
+        \item \textbf{BISS 2025 - Bertinoro International Spring School - \textit{Building Language Models: A Practical Introduction}}
+        \begin{itemize}
+            \item João Monteiro -- Research Scientist at Autodesk
+            \item Proposed CD: 3.6 (12 hours)
+            \item Period: May 2025
+            \item Exam: Done, CDs with evaluation
+        \end{itemize}
+        \item \textbf{BISS 2025 - Bertinoro International Spring School - \textit{Service Engineering: From Design to Operation}}
+        \begin{itemize}
+            \item Prof: Pablo Fernandez -- University of Seville, Spain
+            \item Proposed CD: 3.6 (12 hours)
+            \item Period: May 2025
+            \item Exam: Done, CDs with evaluation
+        \end{itemize}
+        \item \textbf{Service Orchestration and Industrial IoT Platforms for Industry 4 and 5.0 environments}
+        \begin{itemize}
+            \item Prof: Riccardo Venanzi - Università di Bologna
+            \item Proposed CD: 2.4 (12 hours)
+            \item Period: January 2025
+            \item Exam: Doing, CDs with evaluation
+        \end{itemize}
+        \item \textbf{Containerisation and Orchestration for Research Reproducibility}
+        \begin{itemize}
+            \item Prof: Giovanni Ciatto - Università di Bologna
+            \item Proposed CD: 2.4 (12 hours)
+            \item Period: December 2024
+            \item Exam: Done, CDs with evaluation
+        \end{itemize}
+        \item \textbf{Multi-platform Programming for Research-Oriented Software}
+        \begin{itemize}
+            \item Prof: Giovanni Ciatto - Università di Bologna
+            \item Proposed CD: 2.4 (12 hours)
+            \item Period: December 2024
+            \item Exam: Done, CDs with evaluation
+        \end{itemize}
+        \item \textbf{Toward Next-Generation Networks - 5G and O-RAN implementations}
+        \begin{itemize}
+            \item Prof: Domenico Scotece - Università di Bologna
+            \item Proposed CD: 0.48 (12 hours)
+            \item Period: November 2024
+            \item Exam: Presence, CDs with evaluation
+        \end{itemize}
+        \item \textbf{Human-AI Interaction}
+        \begin{itemize}
+            \item Prof: Giovanni Delnevo - Università di Bologna
+            \item Proposed CD: 2.4 (12 hours)
+            \item Period: April 2025
+            \item Exam: Done, CDs with evaluation
+        \end{itemize}
+        \item \textbf{Robust and Reproducible Research}
+        \begin{itemize}
+            \item Prof: Federico Ruggeri - Università di Bologna
+            \item Proposed CD: 3.2 (16 hours)
+            \item Period: April 2025
+            \item Exam: Done, CDs with evaluation
+        \end{itemize}
+        \item \textbf{Data Visualization for Researchers: theory and new approaches to enhance communication and dissemination}
+        \begin{itemize}
+            \item Prof: Chiara Ceccarini - Università di Bologna
+            \item Proposed CD: 2.4 (12 hours)
+            \item Period: April 2025
+            \item Exam: Done, CDs with evaluation
+        \end{itemize}
+
+    \end{enumerate}
+%
+% ---- Bibliography ----
+%
+% BibTeX users should specify bibliography style 'splncs04'.
+% References will then be sorted and formatted in the correct style.
+%
+    \bibliographystyle{alpha}
+    \bibliography{bibliography}
+%
+% \begin{thebibliography}{8}
+% \bibitem{ref_article1}
+% Author, F.: Article title. Journal \textbf{2}(5), 99--110 (2016)
+
+% \bibitem{ref_lncs1}
+% Author, F., Author, S.: Title of a proceedings paper. In: Editor,
+% F., Editor, S. (eds.) CONFERENCE 2016, LNCS, vol. 9999, pp. 1--13.
+% Springer, Heidelberg (2016). \doi{10.10007/1234567890}
+
+% \bibitem{ref_book1}
+% Author, F., Author, S., Author, T.: Book title. 2nd edn. Publisher,
+% Location (1999)
+
+% \bibitem{ref_proc1}
+% Author, A.-B.: Contribution title. In: 9th International Proceedings
+% on Proceedings, pp. 1--2. Publisher, Location (2010)
+
+% \bibitem{ref_url1}
+% LNCS Homepage, \url{http://www.springer.com/lncs}. Last accessed 4
+% Oct 2017
+% \end{thebibliography}
+\end{document}
