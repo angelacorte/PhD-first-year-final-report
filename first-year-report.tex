@@ -18,6 +18,23 @@
 %
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{acronym}
+\usepackage{cleveref}
+% Workaround for: https://tex.stackexchange.com/q/737204/2388
+\makeatletter
+\AtBeginDocument
+{
+    \def\ltx@label#1{\cref@label{#1}}%add braces
+    \def\label@in@display@noarg#1{\cref@old@label@in@display{#1}}%remove braces
+    \def\label@in@mmeasure@noarg#1{%
+    \begingroup%
+    \measuring@false%
+    \cref@old@label@in@display{#1}%remove braces for multline, see https://tex.stackexchange.com/q/737204/2388
+    \endgroup
+}%
+} %
+\makeatother
+
 % Used for displaying a sample figure. If possible, figure files should
 % be included in EPS format.
 %
@@ -27,6 +44,22 @@
 %\renewcommand\UrlFont{\color{blue}\rmfamily}
 %
 \newenvironment{inlinelist}{\begin{enumerate*}[label=\emph{(\roman*)}]}{\end{enumerate*}}
+
+\acrodef{AP}{Aggregate Programming}
+\acrodef{ac}[AC]{Aggregate Computing}
+\acrodef{API}{Application Programming Interface}
+\acrodef{dsl}[DSL]{domain-specific language}
+\acrodef{fc}[FC]{Field Calculus}
+\acrodefplural{FC}[FC]{field calculi}
+\acrodef{HOFC}{Higher-Order \acl{FC}}
+\acrodef{id}[ID]{identifier}
+\acrodef{IoT}{Internet of Things}
+\acrodef{JVM}{Java Virtual Machine}
+\acrodef{scr}[SCR]{self-organising coordination regions}
+\acrodef{TOTA}{Tuples On The Air}
+\acrodef{VMC}{Vascular Morphogenesis Controller}
+\acrodef{cos}[COS]{Collective Operating System}
+\acrodef{cas}[CAS]{Collective Adaptive Systems}
 
 \begin{document}
 
@@ -71,9 +104,7 @@
 
     \section{Context}\label{sec:context}
 
-    Collective Adaptive Systems (CAS) are ensembles of distributed devices, such as sensors,
-    actuators,
-    and robots,
+    \ac{cas} are ensembles of distributed devices, such as sensors, actuators, and robots,
     that cooperate to achieve global goals under dynamic and unpredictable environmental conditions~\cite{DBLP:conf/huc/Ferscha15}.
     %
     Programming such systems is inherently challenging,
@@ -88,22 +119,22 @@
     allowing developers to express the behavior of the system at a collective level,
     without having to explicitly manage the interactions of each single device.
     %
-    A foundational contribution in this direction is the \emph{Field Calculus (FC)}~\cite{JLAMP2019,TOCL2019},
+    A foundational contribution in this direction is the \emph{\ac{fc}}~\cite{JLAMP2019,TOCL2019},
     a formal model for programming collective behaviors through the notion of computational fields,
     which map values over space and time and enable composable definitions of self-organizing processes.
 
     Building on these ideas,
-    \emph{Aggregate Computing (AC)}~\cite{BealIEEEComputer2015} provides a functional programming approach that supports the compositional development of self-adaptive collective services.
+    \emph{\ac{ac}}~\cite{BealIEEEComputer2015} provides a functional programming approach that supports the compositional development of self-adaptive collective services.
     %
-    Through AC,
+    Through \ac{ac},
     the focus of computation shifts from individual devices to collaborative groups,
     making it possible to express complex adaptive behaviors in a concise and modular way.
     %
     Despite its expressive power,
     however,
-    existing aggregate computing approaches typically assume the presence of a single aggregate program running across the distributed system. This
+    existing aggregate computing approaches typically assume the presence of a single aggregate program running across the distributed system.
     %
-    assumption is often unrealistic in practical scenarios,
+    This assumption is often unrealistic in practical scenarios,
     where multiple processes must coexist,
     overlap,
     and evolve in parallel,
@@ -112,7 +143,7 @@
     Such situations call for abstractions and mechanisms that are not yet fully addressed in the current state of the art.
 
     To meet these challenges,
-    this research project proposes the development of a \textbf{Collective Operating System (COS)},
+    this research project proposes the development of a \textbf{\ac{cos}},
     an execution and management environment for aggregate processes that extends the principles of aggregate computing by borrowing concepts from operating systems.
     %
     Much like a traditional OS manages multiple processes, users,
@@ -133,7 +164,7 @@
     where heterogeneous devices can be abstracted into logical collective sensors and actuators,
     thereby enabling high-level sensor fusion~\cite{DBLP:journals/arc/Sasiadek02}.
 
-    The proposed COS will therefore act as a unifying middleware that manages concurrent aggregate processes,
+    The proposed \ac{cos} will therefore act as a unifying middleware that manages concurrent aggregate processes,
     provides mechanisms for permissions and communication,
     and supports deployment on heterogeneous infrastructures.
     %
@@ -148,11 +179,59 @@
     \section{Methodology and Preliminary Results}\label{sec:methodology}
 
     % resource management, coordination of swarms of robots with common goals
-    The methodology of this research follows a progressive approach,
-    first it has been identified some use cases that can benefit from the Aggregate Computing paradigm,
-    with
+    The methodology of this research follows a progressive approach.
+    %
+    Firstly,
+    with the goal of understanding and implementing the basic library functionalities that can be useful in a Collective Operating System,
+    some use cases that can benefit from the \ac{ac} paradigm have been identified.
+    %
+    As first use case,
+    the implementation of a morphogenetic algorithm for self-organizing structures has been chosen.
+    %
+    The algorithm, called \ac{VMC}~\cite{DBLP:conf/gecco/ZahadatHS17},
+    is inspired by the way plants branch and distribute nutrients.
+    %
+    It has been shown to be useful in guiding shape formation in modular robotics
+    as well as resource distribution in hierarchically structured organizations, such as large companies.
+    %
+    The \ac{VMC} has been redesigned as a field-based computation, called \emph{FieldVMC}~\cite{DBLP:conf/acsos/CortecchiaPCC24},
+    hence enabling the emergence of organizational hierarchies in a decentralized and asynchronous way,
+    out of self-organizing interactions among local entities.
+    %
+    The benefits of this approach are manifold.
+    %
+    Being decentralized and free from topological constraints,
+    the approach makes FieldVMC applicable to arbitrary networks;
+    being based on a well-known computational model,
+    it inherits scalability, asynchronicity, and self-organizing capabilities;
+    being implemented in a functional field-based computation framework,
+    it fosters reuse and composability.
+    %
+    From the prospect of the Collective Operating System project,
+    FieldVMC provides a first example of how a complex process can be expressed in terms of field-based computations,
+    and how the \ac{ac} paradigm can be used to engineer self-organizing behaviors in a distributed setting.
+    %
+    Moreover,
+    the implementation of FieldVMC in the Collektive framework~\footnote{\url{https://github.com/angelacorte/fieldVMC}}
+    can be seen as a first step for what it concerns the resource management functionalities.
+    %
+    This work is currently under review for publication in a scientific journal~\ref{paper:fieldvmc}.
 
-
+    Another application scenario that has been considered is the coordination of a swarm of robots that need to achieve a common goal in a shared environment.
+    %
+    In this case,
+    the \ac{ac} paradigm has been used to implement a runtime replanning algorithm for multi-robot missions~\cite{DBLP:conf/acsos/AguzziBCMPPV25},
+    which allows robots to adapt their plans in real-time in response to unpredictable events, such as
+    robot failures or changes in the environment.
+    %
+    The approach is particularly suitable for large teams deployed in areas with unreliable network infrastructure,
+    where centralized control is impractical and where network segmentation is frequent.
+    %
+    From the perspective of the Collective Operating System,
+    this work demonstrates how the \ac{ac} paradigm can be used to implement adaptive mechanisms
+    that allow multiple processes (i.e., the robots) to coordinate and adapt their behavior in a decentralized way.
+    %
+    The implementation of the runtime replanning algorithm in the Alchemist simulator~\footnote{\url{
 
     \section{Future Work and Research Plan}\label{sec:future}
 
@@ -243,7 +322,7 @@
 
     List of submitted papers in phase of review:
     \begin{enumerate}
-        \item \emph{FieldVMC: An Asynchronous Model and Platform for Self-organising Morphogenesis of Artificial Structures} --
+        \item \emph{FieldVMC: An Asynchronous Model and Platform for Self-organising Morphogenesis of Artificial Structures}\label{paper:fieldvmc} --
         \textbf{Abstract:}
         The VMC is an approach
         to structure development
