@@ -178,102 +178,68 @@
 
     \section{Methodology and Preliminary Results}\label{sec:methodology}
 
-    % resource management, coordination of swarms of robots with common goals
     The methodology of this research follows a progressive approach.
-    %
+%
     Firstly,
-    with the goal of understanding and implementing the basic library functionalities that can be useful in a Collective Operating System,
-    some use cases that can benefit from the \ac{ac} paradigm have been identified.
-    %
-    As first use case,
+    with the goal of understanding and implementing basic library functionalities that can be useful in a Collective Operating System,
+    a set of use cases that benefit from the \ac{ac} paradigm have been identified.
+%
+    As a first use case,
     the implementation of a morphogenetic algorithm for self-organizing structures has been chosen.
-    %
-    The algorithm, called \ac{VMC}~\cite{DBLP:conf/gecco/ZahadatHS17},
-    is inspired by the way plants branch and distribute nutrients.
-    %
-    It has been shown to be useful in guiding shape formation in modular robotics
-    as well as resource distribution in hierarchically structured organizations, such as large companies.
-    %
-    The \ac{VMC} has been redesigned as a field-based computation, called \emph{FieldVMC}~\cite{DBLP:conf/acsos/CortecchiaPCC24},
-    hence enabling the emergence of organizational hierarchies in a decentralized and asynchronous way,
-    out of self-organizing interactions among local entities.
-    %
-    The benefits of this approach are manifold.
-    %
-    Being decentralized and free from topological constraints,
-    the approach makes FieldVMC applicable to arbitrary networks;
-    being based on a well-known computational model,
-    it inherits scalability, asynchronicity, and self-organizing capabilities;
-    being implemented in a functional field-based computation framework,
-    it fosters reuse and composability.
-    %
-    From the prospect of the Collective Operating System project,
+%
+    The algorithm \ac{VMC}~\cite{DBLP:conf/gecco/ZahadatHS17},
+    inspired by plant branching and nutrient distribution,
+    has proven useful for shape formation in modular robotics
+    and for resource allocation in hierarchical organizations.
+%
+    It has been redefined as a field-based computation, \emph{FieldVMC}~\cite{DBLP:conf/acsos/CortecchiaPCC24},
+    enabling decentralized and asynchronous emergence of organizational hierarchies
+    through local self-organizing interactions.
+%
+    FieldVMC is topology-independent, inherits scalability, asynchronicity, and self-organization from the \ac{ac} paradigm,
+    and, through its functional field-based framework, promotes reuse and composability.
+%
+    From the perspective of the Collective Operating System project,
     FieldVMC provides a first example of how a complex process can be expressed in terms of field-based computations,
     and how the \ac{ac} paradigm can be used to engineer self-organizing behaviors in a distributed setting.
-    %
+%
     Moreover,
     the implementation of FieldVMC in the Collektive framework~\footnote{\url{https://github.com/angelacorte/fieldVMC}}
-    can be seen as a first step for what it concerns the resource management functionalities.
-    %
+    can be seen as a first step concerning resource management functionalities.
+%
     This work is currently under review for publication in a scientific journal~\ref{paper:fieldvmc}.
 
-    Another application scenario that has been considered is the coordination of a swarm of robots that need to achieve a common goal in a shared environment.
-    %
+    Another application scenario that has been considered is the coordination of a swarm of robots that must achieve a common goal in a shared environment.
+%
     In this case,
-    the \ac{ac} paradigm has been used to implement a runtime replanning algorithm for multi-robot missions~\cite{DBLP:conf/acsos/AguzziBCMPPV25},
-    which allows robots to adapt their plans in real-time in response to unpredictable events, such as
-    robot failures or changes in the environment.
-    %
+    the \ac{ac} paradigm has been used to implement a runtime task replanning algorithm for multi-robot missions~\cite{DBLP:conf/acsos/AguzziBCMPPV25},
+    which allows robots to adapt their plans in real time in response to unpredictable events, such as
+    robot failures or environmental changes.
+%
     The approach is particularly suitable for large teams deployed in areas with unreliable network infrastructure,
-    where centralized control is impractical and where network segmentation is frequent.
-    %
+    where centralized control is impractical and network segmentation is frequent.
+%
     From the perspective of the Collective Operating System,
     this work demonstrates how the \ac{ac} paradigm can be used to implement adaptive mechanisms
-    that allow multiple processes (i.e., the robots) to coordinate and adapt their behavior in a decentralized way.
-    %
-    The implementation of the runtime replanning algorithm in the Alchemist simulator~\footnote{\url{
+    that allow multiple processes (i.e., the robots) to coordinate and adapt their behavior in a decentralized manner.
+
 
     \section{Future Work and Research Plan}\label{sec:future}
 
+    As next steps,
+    the focus will be on extending the preliminary work on the identification of a novel \emph{self-stabilizing Gossip Algorithm}
+    within the Aggregate Computing paradigm and the Collektive framework.
+%
+    It will be shown that the proposed algorithm preserves the locality and lightweight nature of gossip,
+    while ensuring global consistency and robustness to disconnections.
+%
+    This work provides a foundational building block for resilient coordination in pervasive,
+    self-organizing systems, paving the way for more complex, self-stabilizing distributed applications.
 
-%    The initial effort has been devoted to extending the foundations of aggregate computing with explicit support for process management,
-%    enabling the creation, execution, and termination of processes with spatial and temporal scope.
-%    %
-%    This extension has been realized through a formal model based on Field Calculus,
-%    which ensures that processes remain localized, composable, and adaptable to dynamic conditions.
-%    %
-%    Preliminary results obtained through simulation demonstrate the feasibility of running concurrent processes in parallel,
-%    even when their execution spans non-contiguous regions,
-%    while maintaining localized consistency and resilience.
-%    %
-%    Early experiments further indicate that role-based access and permissions can be expressed in terms of contextual constraints,
-%    allowing subsets of devices to be dynamically allocated to specific processes.
-%    %
-%    Exploratory prototypes have also been developed to handle signals and interrupts,
-%    enabling runtime reconfiguration and adaptation while preserving safety through scope and authorization checks.
-%    %
-%    These results provide encouraging evidence that classical operating system concepts can be reinterpreted effectively in the collective domain.
-
-
-%    The next phase of the project will focus on consolidating these initial findings into a coherent model of a Collective Operating System.
-%    %
-%    A primary research direction will be the design of mechanisms for inter-process communication,
-%    enabling distributed processes to exchange information and coordinate across spatially distinct regions.
-%    %
-%    Another crucial objective will be the integration of heterogeneous devices into collective abstractions for sensing and actuation,
-%    thus providing robust interfaces for sensor fusion and distributed control.
-%    %
-%    The research plan involves refining the theoretical model of aggregate processes,
-%    implementing the proposed abstractions in the Collektive framework,
-%    and conducting extensive simulation campaigns to assess performance,
-%    scalability, and resilience under diverse conditions.
-%    %
-%    Finally, the system will be validated through application scenarios such as smart city coordination,
-%    large-scale monitoring, and autonomous navigation,
-%    demonstrating the effectiveness of the proposed middleware in managing multiple processes in dynamic, heterogeneous environments.
-%    %
-%    The overall goal is to establish a principled foundation for the Collective Operating System,
-%    bridging aggregate computing and distributed operating system principles while providing concrete benefits for real-world Collective Adaptive Systems.
+    Subsequently,
+    the research will address the design and implementation of process management mechanisms,
+    including the definition of roles and permissions for collective processes,
+    as well as the development of signaling and interrupt handling mechanisms.
 
     \section{Publications}\label{sec:publications}
     List of published (or already accepted) papers:
@@ -415,7 +381,7 @@
             \item Prof: Riccardo Venanzi -- Università di Bologna
             \item Proposed CD: 2.4 (12 hours)
             \item Period: January 2025
-            \item Exam: Doing, CDs with evaluation
+            \item Exam: Doing (lectures already attended), CDs with evaluation
         \end{itemize}
         \item \textbf{Containerisation and Orchestration for Research Reproducibility}
         \begin{itemize}
