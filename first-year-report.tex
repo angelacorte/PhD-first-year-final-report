@@ -142,19 +142,16 @@
     %
     Such situations call for abstractions and mechanisms that are not yet fully addressed in the current state of the art.
 
-    Current existing approaches are particularly able to adapt to different environmental conditions,
+    Current existing \ac{ac} approaches are particularly able to adapt to different environmental conditions,
     such as failures, network partitions, and changes in the topology of the network,
-    but they lack the ability of creating subsystems, or structures that can be used to organize the system in different parts,
-    each one with its own behavior and its own goals.
+    but they lack the ability of creating subsystems, or structures, that can be used to organize the system in different parts,
+    potentially each one with its own behavior and its own goals.
     %
     Some examples are morphogenetic algorithms:
     these algorithms are inspired by biological processes and are used to create complex structures and patterns
     through simple local interactions among the components of the system~\cite{DBLP:books/daglib/p/Beal12,DBLP:conf/gecco/MorganC13,DBLP:conf/gecco/ZahadatHS17}.
     %
     They can be used in various applications, such as modular robotics, swarm robotics, and self-assembling systems.
-    %
-
-
 
     To meet these challenges,
     this research project proposes the development of a \textbf{\ac{cos}},
@@ -166,6 +163,9 @@
     %
     The project investigates how classical notions of operating systems --such as users and permissions, signals and interrupts,
     inter-process communication, and resource management --can be reinterpreted and redefined in a collective and distributed setting.
+    %
+    In addition,
+    this research aims to investigate the feasibility of morphogenetic applications and implementations within the context of \ac{ac}.
 
     In this perspective,
     users and permissions must be understood as roles and rights distributed across groups of devices and human actors,
@@ -196,7 +196,11 @@
 %
     Firstly,
     with the goal of understanding and implementing basic library functionalities that can be useful in a Collective Operating System,
-    a set of use cases that benefit from the \ac{ac} paradigm have been identified.
+    a set of use cases that benefit from the \ac{ac} paradigm have been identified:
+    \begin{itemize}
+        \item
+    \end{itemize}
+
 %
     As a first use case,
     the implementation of a morphogenetic algorithm for self-organizing structures has been chosen.
