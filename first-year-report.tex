@@ -155,7 +155,7 @@
     They can be used in various applications, such as modular robotics, swarm robotics, and self-assembling systems.
 
     For what it concerns the global state maintenance,
-    gossip algorithms~\cite{DBLP:journals/csur/KermarrecM07} are a class of distributed algorithms that allow nodes in a network to exchange information and reach consensus in a decentralized manner.
+    gossip algorithms are a class of distributed algorithms that allow nodes in a network to exchange information and reach consensus in a decentralized manner.
     %
     However,
     existing gossip algorithms do not guarantee self-stabilization,
@@ -225,8 +225,9 @@
     Among the various sub-research lines that compose the overall research project,
     so far the focus and preliminary results have been on the following aspects:
     \begin{itemize}
-        \item Apply the \ac{ac} paradigm to implement a morphogenetic algorithm for self-organizing structures;
-        \item Apply the \ac{ac} paradigm to implement a runtime task replanning algorithm for multi-robot missions;
+        \item Implement a morphogenetic algorithm for self-organizing structures through the \ac{ac} paradigm;
+        \item Runtime task replanning algorithm for multi-robot missions for large-scale deployments with the \ac{ac} paradigm;
+        \item Practical demonstrations of multi-robot coordination based on aggregate computing principles in small-scale scenarios;
         \item Development of a novel self-stabilizing gossip algorithm within the \ac{ac} paradigm.
     \end{itemize}
 
@@ -251,10 +252,11 @@
     the implementation of FieldVMC in the Collektive framework~\footnote{\url{https://github.com/angelacorte/fieldVMC}}
     can be seen as a first step concerning resource management functionalities.
 %
-    This work is currently under the second round of review for publication in the scientific journal ``Complex \& Intelligent Systems'' (Q1)~\ref{paper:fieldvmc}.
+    This work is currently under the second round of review for publication in the scientific journal ``Complex \& Intelligent Systems'' (Q1) (\cref{paper:fieldvmc}).
 
     \paragraph{Multi-Robot Coordination.}
-    Another application scenario that has been considered is the coordination of a swarm of robots that must achieve a common goal in a shared environment.
+    Another application scenario that has been considered is the coordination of a swarm of robots that must achieve a
+    common goal in a shared environment~\footnote{\url{https://github.com/angelacorte/experiments-2025-acsos-robots}}.
 %
     In this case,
     the \ac{ac} paradigm has been used to implement a runtime task replanning algorithm for multi-robot missions,
@@ -264,37 +266,69 @@
     The approach is particularly suitable for large teams deployed in areas with unreliable network infrastructure,
     where centralized control is impractical and network segmentation is frequent.
     %
-    This work has been published in the proceedings of the IEEE International Conference on Autonomic Computing and Self-Organizing Systems (ACSOS 2025)~\cite{DBLP:conf/acsos/AguzziBCMPPV25}.
+    This work has been published (\cref{paper:acsos25}) in the proceedings of the ``IEEE International Conference on Autonomic
+    Computing and Self-Organizing Systems'' (ACSOS 2025)~\cite{DBLP:conf/acsos/AguzziBCMPPV25}.
 %
     From the perspective of the Collective Operating System,
     this work demonstrates how the \ac{ac} paradigm can be used to implement adaptive mechanisms
     that allow multiple processes (i.e., the robots) to coordinate and adapt their behavior in a decentralized manner.
 
+    Another contribution in this direction, presented in the proceedings of the ``Coordination Models and Languages''
+    conference (COORDINATION 2025)~\cite{DBLP:conf/coordination/AguzziBBCCDFPV25} (\cref{paper:coordination25}),
+    is the design of a toolchain enabling practical multi-robot demonstrations grounded in aggregate computing principles,
+    which was validated through a live interactive showcase during the ``European Researchers’ Night''.
+    %
+    This work shows how a team of mobile robots can be coordinated to form spatial patterns,
+    exploiting a camera system and ArUco markers for localization.
+    %
+    Moreover,
+    this project is still ongoing under the name of ``Project Emerge''~\footnote{\url{https://github.com/Project-Emerge}},
+    with the goal of showcasing its potential on a larger swarm of robots during the upcoming ``European Researchers’ Night''.
+
     \paragraph{Self-stabilizing Gossip Algorithm.}
 
-
+    The proposed self-stabilizing gossip algorithm aims to overcome the main limitations of existing approaches
+    by ensuring that the gossip process can recover from transient faults and changes in the network topology,
+    while preserving the locality and lightweight nature of gossip.
+%
+    The algorithm is currently under development and will be integrated into the Collektive framework~\footnote{\url{https://collektive.github.io/}}
+    to provide a robust and adaptive mechanism for information dissemination in collective systems.
+    %
+    The development of this algorithm is a step towards the realization of the Collective Operating System,
+    as it provides a foundational building block for resilient coordination and message propagation,
+    with \emph{probably} low overhead and high adaptability, in pervasive, self-organizing systems.
 
     \section{Future Work and Research Plan}\label{sec:future}
 
-    As next steps,
-    the focus will be on extending the preliminary work on the identification of a novel \emph{self-stabilizing Gossip Algorithm}
-    within the Aggregate Computing paradigm and the Collektive framework.
+    The future work can be divided into short-, mid-, and long-term goals.
 %
-    It will be shown that the proposed algorithm preserves the locality and lightweight nature of gossip,
-    while ensuring global consistency and robustness to disconnections.
+    In the short term,
+    the focus will be on completing the development of the self-stabilizing gossip algorithm
+    and integrating it into the Collektive framework.
 %
-    This work provides a foundational building block for resilient coordination in pervasive,
-    self-organizing systems, paving the way for more complex, self-stabilizing distributed applications.
+    This will include rigorous testing and validation of the algorithm across different scenarios,
+    both in simulations and real-world deployments,
+    in order to assess its performance, scalability, and robustness.
 
-    Subsequently,
-    the research will address the design and implementation of process management mechanisms,
-    including the definition of roles and permissions for collective processes,
-    as well as the development of signaling and interrupt handling mechanisms.
+    In the mid term,
+    the plan is to investigate distributed task scheduling in collaboration with the research group at \emph{Mälardalens University} (Sweden),
+    potentially through a period abroad.
+%
+    This will also involve studying aggregate process mechanisms,
+    to evaluate whether they provide a feasible approach for managing such a system.
+
+    As long-term goals,
+    the research will focus on the design and implementation of process management mechanisms within the Collective Operating System.
+%
+    This encompasses defining roles and permissions for collective processes,
+    as well as developing signaling and interrupt-handling mechanisms that are appropriate for a distributed and collective context.
+
+
 
     \section{Publications}\label{sec:publications}
     List of published (or already accepted) papers:
     \begin{enumerate}
-        \item \emph{A Field-based Approach for Runtime Replanning in Swarm Robotics Missions}~\cite{DBLP:conf/acsos/AguzziBCMPPV25}
+        \item \emph{A Field-based Approach for Runtime Replanning in Swarm Robotics Missions}~\cite{DBLP:conf/acsos/AguzziBCMPPV25}\label{paper:acsos25}
         \textbf{Abstract:}
         Ensuring mission success for multi-robot systems operating
         in unpredictable environments requires robust mechanisms to react to unpredictable events,
@@ -320,7 +354,7 @@
             %
             Additionally, we show that the approach can scale well with the number of robots.
 
-        \item \emph{A Demonstrator for Self-organizing Robot Teams}~\cite{DBLP:conf/coordination/AguzziBBCCDFPV25}
+        \item \emph{A Demonstrator for Self-organizing Robot Teams}~\cite{DBLP:conf/coordination/AguzziBBCCDFPV25}\label{paper:coordination25}
         \textbf{Abstract:}
             Aggregate computing is a paradigm with over a decade of investigation and multiple programming frameworks available,
             which proved to be particularly suitable for the simulation of applications in challenging domains such as smart cities and robot swarms.
