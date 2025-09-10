@@ -144,14 +144,31 @@
 
     Current existing \ac{ac} approaches are particularly able to adapt to different environmental conditions,
     such as failures, network partitions, and changes in the topology of the network,
-    but they lack the ability of creating subsystems, or structures, that can be used to organize the system in different parts,
+    but they lack the ability of maintaining a global state without centralized control that is not monotonic,
+    creating subsystems, or structures, that can be used to organize the system in different parts,
     potentially each one with its own behavior and its own goals.
     %
-    Some examples are morphogenetic algorithms:
+    Some examples of the latter include morphogenetic algorithms:
     these algorithms are inspired by biological processes and are used to create complex structures and patterns
     through simple local interactions among the components of the system~\cite{DBLP:books/daglib/p/Beal12,DBLP:conf/gecco/MorganC13,DBLP:conf/gecco/ZahadatHS17}.
     %
     They can be used in various applications, such as modular robotics, swarm robotics, and self-assembling systems.
+
+    For what it concerns the global state maintenance,
+    gossip algorithms~\cite{DBLP:journals/csur/KermarrecM07} are a class of distributed algorithms that allow nodes in a network to exchange information and reach consensus in a decentralized manner.
+    %
+    However,
+    existing gossip algorithms do not guarantee self-stabilization,
+    meaning that they may not converge to a correct state after transient faults or changes in the network topology.
+    %
+    In the \ac{ac} context,
+    this limitation has been partially addressed through the introduction of replication mechanism~\cite{PianiniCoordination2016},
+    which consists in replicating the gossip process multiple times per node,
+    thereby updating the local state and eventually reaching a consistent state.
+    %
+    However,
+    this approach can lead to lagging information in the network before the changes are effectively acknowledged,
+    and there is the risk of contaminating the new gossip with obsolete values, resulting in no benefit from the restart.
 
     To meet these challenges,
     this research project proposes the development of a \textbf{\ac{cos}},
@@ -192,19 +209,28 @@
 
     \section{Methodology and Preliminary Results}\label{sec:methodology}
 
-    The methodology of this research follows a progressive approach.
-%
-    Firstly,
-    with the goal of understanding and implementing basic library functionalities that can be useful in a Collective Operating System,
-    a set of use cases that benefit from the \ac{ac} paradigm have been identified:
+    The methodology of this research follows a progressive approach,
+    meaning that the initial focus has been on developing scenarios to identify requirements and possible challenges
+    that the \ac{cos} should address.
+    %
+    This has been done by applying the \ac{ac} paradigm to implement specific use cases,
+    such as morphogenetic algorithms and multi-robot coordination,
+    which can benefit from the collective and self-organizing nature of the paradigm.
+    %
+    Indeed,
+    during the development of these use cases,
+    a possible improvement of the state of the art has been identified,
+    namely the definition of a novel self-stabilizing gossip algorithm within the \ac{ac} paradigm.
+
+    Among the various sub-research lines that compose the overall research project,
+    so far the focus and preliminary results have been on the following aspects:
     \begin{itemize}
-        \item
+        \item Apply the \ac{ac} paradigm to implement a morphogenetic algorithm for self-organizing structures;
+        \item Apply the \ac{ac} paradigm to implement a runtime task replanning algorithm for multi-robot missions;
+        \item Development of a novel self-stabilizing gossip algorithm within the \ac{ac} paradigm.
     \end{itemize}
 
-%
-    As a first use case,
-    the implementation of a morphogenetic algorithm for self-organizing structures has been chosen.
-%
+    \paragraph{Morphogenetic Algorithm.}
     The algorithm \ac{VMC}~\cite{DBLP:conf/gecco/ZahadatHS17},
     inspired by plant branching and nutrient distribution,
     has proven useful for shape formation in modular robotics
@@ -225,21 +251,27 @@
     the implementation of FieldVMC in the Collektive framework~\footnote{\url{https://github.com/angelacorte/fieldVMC}}
     can be seen as a first step concerning resource management functionalities.
 %
-    This work is currently under review for publication in a scientific journal~\ref{paper:fieldvmc}.
+    This work is currently under the second round of review for publication in the scientific journal ``Complex \& Intelligent Systems'' (Q1)~\ref{paper:fieldvmc}.
 
+    \paragraph{Multi-Robot Coordination.}
     Another application scenario that has been considered is the coordination of a swarm of robots that must achieve a common goal in a shared environment.
 %
     In this case,
-    the \ac{ac} paradigm has been used to implement a runtime task replanning algorithm for multi-robot missions~\cite{DBLP:conf/acsos/AguzziBCMPPV25},
+    the \ac{ac} paradigm has been used to implement a runtime task replanning algorithm for multi-robot missions,
     which allows robots to adapt their plans in real time in response to unpredictable events, such as
     robot failures or environmental changes.
 %
     The approach is particularly suitable for large teams deployed in areas with unreliable network infrastructure,
     where centralized control is impractical and network segmentation is frequent.
+    %
+    This work has been published in the proceedings of the IEEE International Conference on Autonomic Computing and Self-Organizing Systems (ACSOS 2025)~\cite{DBLP:conf/acsos/AguzziBCMPPV25}.
 %
     From the perspective of the Collective Operating System,
     this work demonstrates how the \ac{ac} paradigm can be used to implement adaptive mechanisms
     that allow multiple processes (i.e., the robots) to coordinate and adapt their behavior in a decentralized manner.
+
+    \paragraph{Self-stabilizing Gossip Algorithm.}
+
 
 
     \section{Future Work and Research Plan}\label{sec:future}
